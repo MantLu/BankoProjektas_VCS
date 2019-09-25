@@ -43,7 +43,7 @@ public class Prisijungimas {
                 System.out.println("Nepavyko");
             }
 
-            // 1. pavyko - langas A 123
+            // 1. pavyko - langas A
             // 2. nepavyko - langas B
 
         } catch (SQLException e) {
