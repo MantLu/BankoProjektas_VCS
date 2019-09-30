@@ -18,7 +18,7 @@ public class Meniu {
         System.out.println("        ********************************");
     }
 
-    public static void bankomArElbank() {
+    public static void bankomArElbankMeniu() {
 
         System.out.println("        ********************************");
         System.out.println("        *                              *");
@@ -27,6 +27,38 @@ public class Meniu {
         System.out.println("        *                              *");
         System.out.println("        *  1 - Bankomatas              *");
         System.out.println("        *  2 - El. Bankas              *");
+        System.out.println("        *                              *");
+        System.out.println("        *  0 - Išjungti programą       *");
+        System.out.println("        *                              *");
+        System.out.println("        ********************************");
+    }
+
+    public static void bankomatasMeniu() {
+
+        System.out.println("        ********************************");
+        System.out.println("        *                              *");
+        System.out.println("        *  Pasirinkite veiksma         *");
+        System.out.println("        *                              *");
+        System.out.println("        *                              *");
+        System.out.println("        *  1 - Saskaitos likutis       *");
+        System.out.println("        *  2 - Pinigu inesimas         *");
+        System.out.println("        *  3 - Gryzti atgal            *");
+        System.out.println("        *                              *");
+        System.out.println("        *  0 - Išjungti programą       *");
+        System.out.println("        *                              *");
+        System.out.println("        ********************************");
+    }
+
+    public static void elektroninisBankas() {
+
+        System.out.println("        ********************************");
+        System.out.println("        *                              *");
+        System.out.println("        *  Pasirinkite veiksma         *");
+        System.out.println("        *                              *");
+        System.out.println("        *                              *");
+        System.out.println("        *  1 - -----------------       *");
+        System.out.println("        *  2 - ---------------         *");
+        System.out.println("        *  3 - ------------            *");
         System.out.println("        *                              *");
         System.out.println("        *  0 - Išjungti programą       *");
         System.out.println("        *                              *");

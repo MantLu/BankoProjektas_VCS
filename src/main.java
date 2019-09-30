@@ -5,7 +5,7 @@ public class main {
     public static void main(String[] args) throws SQLException {
 
         Logika logika = new Logika();
-        logika.pradzia();
+        logika.meniuPasirinkimai();
 
         //Meniu meniu = new Meniu();
         //meniu.pradinisMeniu();

@@ -16,8 +16,10 @@ public class Prisijungimas {
         return conn;
     }
 
-    public static void prisijungimas() {
+    public static boolean prisijungimas(PrisijungesVart vart) {
         Scanner ivedimas2 = new Scanner(System.in);
+
+        boolean arPavyko = false;
 
         System.out.println("Iveskite savo elektroninio pasto adresa: ");
         String pastas = ivedimas2.nextLine();
@@ -35,19 +37,22 @@ public class Prisijungimas {
 
             rs = mySt.executeQuery();
 
-            System.out.println(rs.getInt(1));
+            int userAmount = rs.getInt(1);
 
-            if () {
-                Meniu.bankomArElbank();
+            if (userAmount > 0) {
+                arPavyko = true;
+                Meniu.bankomArElbankMeniu();
+                vart.prisVardas = pastas;
             } else {
-                System.out.println("Nepavyko");
+                System.out.println("Tokio vartotojo nera");
+                Meniu.pradinisMeniu();
             }
 
-            // 1. pavyko - langas A
-            // 2. nepavyko - langas B
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return arPavyko;
     }
 }
