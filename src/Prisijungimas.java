@@ -16,7 +16,8 @@ public class Prisijungimas {
         return conn;
     }
 
-    public static boolean prisijungimas(PrisijungesVart vart) {
+    public static boolean prisijungimas(PrisijungesVart vart, PrisijungesVart slap) {
+
         Scanner ivedimas2 = new Scanner(System.in);
 
         boolean arPavyko = false;
@@ -43,6 +44,8 @@ public class Prisijungimas {
                 arPavyko = true;
                 Meniu.bankomArElbankMeniu();
                 vart.prisVardas = pastas;
+                slap.prisSlapt = slaptazod;
+
             } else {
                 System.out.println("Tokio vartotojo nera");
                 Meniu.pradinisMeniu();

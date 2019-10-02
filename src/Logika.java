@@ -1,9 +1,9 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Logika {
 
     PrisijungesVart vart = new PrisijungesVart();
+    PrisijungesVart slap = new PrisijungesVart();
 
 
     public void meniuPasirinkimai() {
@@ -15,10 +15,11 @@ public class Logika {
         boolean isCorrectPath = false;
 
         while (!isCorrectPath) {
+
             switch (pasirinkimas.nextInt()) {
 
                 case (1):
-                    isCorrectPath = Prisijungimas.prisijungimas(vart);
+                    isCorrectPath = Prisijungimas.prisijungimas(vart, slap);
                     break;
                 case (2):
                     Registracija.registracija();
@@ -40,12 +41,31 @@ public class Logika {
             switch (pasirinkimas.nextInt()) {
 
                 case (1):
-                    /*isCorrectPath*/
-                    Bankomatas.prisijungtiPrieBankomato(vart);
+                    isCorrectPath = Bankomatas.prisijungtiPrieBankomato(vart);
                     break;
                 case (2):
-                    /*isCorrectPath = */
+                    //isCorrectPath//
                     Meniu.elektroninisBankas();
+                    break;
+                case (0):
+                    System.out.println("Programa isjungta");
+                    break;
+                default:
+                    System.err.println("Blogai nurodytas pasirinkimas");
+            }
+        }
+
+        isCorrectPath = false;
+
+        while (!isCorrectPath) {
+
+            switch (pasirinkimas.nextInt()) {
+
+                case (1):
+                    isCorrectPath = Bankomatas.saskaitosLikutis(vart, slap);
+                    break;
+                case (2):
+                    isCorrectPath = Bankomatas.piniguInesimas(vart, slap);
                     break;
                 case (0):
                     System.out.println("Programa isjungta");

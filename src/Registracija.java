@@ -17,6 +17,7 @@ public class Registracija {
     }
 
     public static void registracija() {
+
         Scanner ivedimas = new Scanner(System.in);
 
         System.out.println("Iveskite savo varda: ");
@@ -34,10 +35,10 @@ public class Registracija {
         System.out.println("Iveskite PIN koda: ");
         String PIN = ivedimas.nextLine();
 
-        System.out.println("Iveskite suma kuria norite inesti: ");
+        System.out.println("Iveskite suma EUR kuria norite inesti: ");
         String suma = ivedimas.nextLine();
 
-        String sql = "insert into Registracija(vardas, pavarde, elpastas, slaptazodis, PIN, suma) values (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Registracija(vardas, pavarde, elpastas, slaptazodis, PIN, suma) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement myStmt = connect().prepareStatement(sql)) {
 

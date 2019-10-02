@@ -56,8 +56,8 @@ public class Meniu {
         System.out.println("        *  Pasirinkite veiksma         *");
         System.out.println("        *                              *");
         System.out.println("        *                              *");
-        System.out.println("        *  1 - -----------------       *");
-        System.out.println("        *  2 - ---------------         *");
+        System.out.println("        *  1 - Saskaitos likutis       *");
+        System.out.println("        *  2 - Pinigu pervedimas       *");
         System.out.println("        *  3 - ------------            *");
         System.out.println("        *                              *");
         System.out.println("        *  0 - Išjungti programą       *");
