@@ -26,6 +26,7 @@ public class Logika {
                     break;
                 case (0):
                     System.out.println("Programa isjungta");
+                    System.exit(0);
                     break;
                 default:
                     System.err.println("Blogai nurodytas pasirinkimas");
@@ -34,6 +35,36 @@ public class Logika {
         }
 
 
+        prisijungimoPasirinkimas(pasirinkimas);
+
+        isCorrectPath = false;
+
+        while (!isCorrectPath) {
+
+            switch (pasirinkimas.nextInt()) {
+
+                case (1):
+                    isCorrectPath = Bankomatas.saskaitosLikutis(vart, slap);
+                    break;
+                case (2):
+                    isCorrectPath = Bankomatas.piniguInesimas(vart, slap);
+                    break;
+                case (3):
+                    Meniu.bankomArElbankMeniu();
+                    prisijungimoPasirinkimas(pasirinkimas);
+                    break;
+                case (0):
+                    System.out.println("Programa isjungta");
+                    System.exit(0);
+                    break;
+                default:
+                    System.err.println("Blogai nurodytas pasirinkimas");
+            }
+        }
+    }
+
+    private void prisijungimoPasirinkimas(Scanner pasirinkimas) {
+        boolean isCorrectPath;
         isCorrectPath = false;
 
         while (!isCorrectPath) {
@@ -49,26 +80,7 @@ public class Logika {
                     break;
                 case (0):
                     System.out.println("Programa isjungta");
-                    break;
-                default:
-                    System.err.println("Blogai nurodytas pasirinkimas");
-            }
-        }
-
-        isCorrectPath = false;
-
-        while (!isCorrectPath) {
-
-            switch (pasirinkimas.nextInt()) {
-
-                case (1):
-                    isCorrectPath = Bankomatas.saskaitosLikutis(vart, slap);
-                    break;
-                case (2):
-                    isCorrectPath = Bankomatas.piniguInesimas(vart, slap);
-                    break;
-                case (0):
-                    System.out.println("Programa isjungta");
+                    System.exit(0);
                     break;
                 default:
                     System.err.println("Blogai nurodytas pasirinkimas");

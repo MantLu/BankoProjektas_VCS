@@ -31,6 +31,7 @@ public class Prisijungimas {
         String sql = "SELECT COUNT(*) FROM Registracija WHERE elpastas = ? AND slaptazodis = ?";
 
         ResultSet rs;
+
         try (PreparedStatement mySt = connect().prepareStatement(sql)) {
 
             mySt.setString(1, pastas);
@@ -50,7 +51,6 @@ public class Prisijungimas {
                 System.out.println("Tokio vartotojo nera");
                 Meniu.pradinisMeniu();
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();

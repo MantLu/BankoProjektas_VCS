@@ -28,8 +28,10 @@ public class Bankomatas {
 
         ResultSet rs;
 
-        try (PreparedStatement myStm = connect().prepareStatement(sql)) {
+        try {
 
+            Connection c = connect();
+            PreparedStatement myStm = c.prepareStatement(sql);
             myStm.setString(1, String.valueOf(Pin));
             myStm.setString(2, vart.prisVardas);
 
@@ -50,7 +52,6 @@ public class Bankomatas {
         }
 
         return arPavyko;
-
     }
 
     public static boolean saskaitosLikutis(PrisijungesVart vart, PrisijungesVart slap) {
@@ -87,8 +88,10 @@ public class Bankomatas {
 
         String sql = "SELECT suma FROM Registracija WHERE elpastas = ? AND slaptazodis = ?";
 
-        try (PreparedStatement myStm = connect().prepareStatement(sql)) {
+        try {
 
+            Connection c = connect();
+            PreparedStatement myStm = c.prepareStatement(sql);
             myStm.setString(1, vart.prisVardas);
             myStm.setString(2, slap.prisSlapt);
 
@@ -99,30 +102,20 @@ public class Bankomatas {
 
             System.out.println("Naujas saskaitos likutis: " + naujaSuma + " EUR");
 
+            String sql1 = "UPDATE Registracija SET suma = ? WHERE elpastas = ? AND slaptazodis = ?";
 
-
-        String sql1 = "UPDATE Registracija SET suma = ? WHERE elpastas = ? AND slaptazodis = ?";
-
-        try (PreparedStatement mystm = connect().prepareStatement(sql1)) {
-
-            mystm.setString(1, vart.prisVardas);
-            mystm.setString(2, slap.prisSlapt);
+            PreparedStatement mystm = c.prepareStatement(sql1);
 
             mystm.setInt(1, naujaSuma);
+            mystm.setString(2, vart.prisVardas);
+            mystm.setString(3, slap.prisSlapt);
 
             mystm.executeUpdate();
-
-        }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return arPavyko;
-
-    }
-
-    public static void gryztiAtgal() {
-
     }
 }
