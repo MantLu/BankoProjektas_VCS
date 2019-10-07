@@ -39,7 +39,7 @@ public class Meniu {
         System.out.println("        *                              *");
         System.out.println("        *                              *");
         System.out.println("        *  1 - Saskaitos likutis       *");
-        System.out.println("        *  2 - Pinigu inesimas         *");
+        System.out.println("        *  2 - Pinigu inesimas         *"); // Pinigu issigryninimas!
         System.out.println("        *  3 - Gryzti atgal            *");
         System.out.println("        *                              *");
         System.out.println("        *  0 - Išjungti programą       *");
