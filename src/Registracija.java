@@ -16,7 +16,9 @@ public class Registracija {
         return conn;
     }
 
-    public static void registracija() {
+    public static boolean registracija() {
+
+        boolean arPavyko = false;
 
         String vardas = null;
         String pavarde = null;
@@ -62,51 +64,7 @@ public class Registracija {
             }
         }
 
-        /* System.out.println("Iveskite savo varda: ");
-        String vardas = ivedimas.nextLine();
-
-            if (vardas != null && vardas.isEmpty()) {
-                System.out.println("Tuscias laukas!");
-            }
-
-        System.out.println("Iveskite savo pavarde: ");
-        String pavarde = ivedimas.nextLine();
-
-            if (pavarde != null && pavarde.isEmpty()) {
-                System.out.println("Tuscias laukas!");
-            }
-
-        System.out.println("Iveskite savo elektroninio pasto adresa: ");
-        String elpastas = ivedimas.nextLine();
-
-            if (elpastas != null && elpastas.isEmpty()) {
-                System.out.println("Tuscias laukas!");
-            }
-
-        System.out.println("Iveskite slaptazodi: ");
-        String slaptazodis = ivedimas.nextLine();
-
-            if (slaptazodis != null && slaptazodis.isEmpty()) {
-                System.out.println("Tuscias laukas!");
-            }
-
-        System.out.println("Iveskite PIN koda: ");
-        String PIN = ivedimas.nextLine();
-
-            if (PIN != null && PIN.isEmpty()) {
-                System.out.println("Tuscias laukas!");
-            }
-
-        System.out.println("Iveskite suma EUR kuria norite inesti: ");
-        Integer suma = Integer.valueOf(ivedimas.nextLine());
-
-            if (suma <= 0) {
-                System.out.println("Neteisinga suma!");
-            } */
-
         String sql = "INSERT INTO Registracija(vardas, pavarde, elpastas, slaptazodis, PIN, suma) VALUES (?, ?, ?, ?, ?, ?)";
-
-        ResultSet rs;
 
         try (PreparedStatement myStmt = connect().prepareStatement(sql)) {
 
@@ -119,9 +77,21 @@ public class Registracija {
 
             myStmt.executeUpdate();
 
+            int i = myStmt.executeUpdate();
+
+            if (i > 0) {
+                arPavyko = true;
+                System.out.println("Registracija sekminga!" + "\n" + "Prasome prisijunkite");
+                Meniu.pradinisMeniu();
+            } else {
+                System.out.println("Prisiregistruoti nepavyko!" + "\n" + "Prasome bandykite dar karta");
+                Meniu.pradinisMeniu();
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return arPavyko;
     }
 }
