@@ -75,8 +75,6 @@ public class Registracija {
             myStmt.setString(5, PIN);
             myStmt.setString(6, suma);
 
-            myStmt.executeUpdate();
-
             int i = myStmt.executeUpdate();
 
             if (i > 0) {
