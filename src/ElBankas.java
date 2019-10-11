@@ -14,6 +14,14 @@ public class ElBankas {
         return conn;
     }
 
+    public static boolean prisijungtiPrieElBanko(PrisijungesVart vart) {
+
+        boolean arPavyko = false;
+        Meniu.elektroninisBankas();
+        return arPavyko;
+    }
+
+
     public static boolean saskLikutisElBanke(PrisijungesVart vart, PrisijungesVart slap) {
 
         boolean arPavyko = false;
@@ -29,7 +37,7 @@ public class ElBankas {
 
             int sumaspausd = rs.getInt(1);
 
-            System.out.println("Saskaitos likutis: " + sumaspausd + " EUR");
+            System.out.println("Sąskaitos likutis: " + sumaspausd + " EUR");
 
         } catch (SQLException e) {
             e.printStackTrace();

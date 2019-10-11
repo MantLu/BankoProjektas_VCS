@@ -22,10 +22,10 @@ public class Prisijungimas {
 
         boolean arPavyko = false;
 
-        System.out.println("Iveskite savo elektroninio pasto adresa: ");
+        System.out.println("Įveskite savo elektroninio pašto adresą: ");
         String pastas = ivedimas2.nextLine();
 
-        System.out.println("Iveskite slaptazodi: ");
+        System.out.println("Įveskite slaptažodį: ");
         String slaptazod = ivedimas2.nextLine();
 
         String sql = "SELECT COUNT(*) FROM Registracija WHERE elpastas = ? AND slaptazodis = ?";
@@ -48,7 +48,7 @@ public class Prisijungimas {
                 slap.prisSlapt = slaptazod;
 
             } else {
-                System.out.println("Tokio vartotojo nera");
+                System.out.println("Tokio vartotojo nėra");
                 Meniu.pradinisMeniu();
             }
 

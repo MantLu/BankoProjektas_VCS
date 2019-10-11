@@ -6,14 +6,5 @@ public class main {
 
         Logika logika = new Logika();
         logika.meniuPasirinkimai();
-
-        //Meniu meniu = new Meniu();
-        //meniu.pradinisMeniu();
-
-        //Registracija reg = new Registracija();
-        //reg.registracija();
-
-        //Prisijungimas pri = new Prisijungimas();
-        //pri.prisijungimas();
     }
 }

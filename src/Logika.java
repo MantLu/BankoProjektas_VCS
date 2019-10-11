@@ -25,7 +25,7 @@ public class Logika {
                     Registracija.registracija();
                     break;
                 case (0):
-                    System.out.println("Programa isjungta");
+                    System.out.println("Programa išjungta");
                     System.exit(0);
                     break;
                 default:
@@ -33,7 +33,6 @@ public class Logika {
                     break;
             }
         }
-
 
         prisijungimoPasirinkimas(pasirinkimas);
 
@@ -50,17 +49,43 @@ public class Logika {
                     isCorrectPath = Bankomatas.piniguInesimas(vart, slap);
                     break;
                 case (3):
+                    isCorrectPath = Bankomatas.pasiimtiPinigu(vart, slap);
+                    break;
+                case (4):
+                    isCorrectPath = Bankomatas.pakeistiPIN(vart, slap);
+                    break;
+                case (5):
                     Meniu.bankomArElbankMeniu();
                     prisijungimoPasirinkimas(pasirinkimas);
                     break;
                 case (0):
-                    System.out.println("Programa isjungta");
+                    System.out.println("Programa išjungta");
                     System.exit(0);
                     break;
                 default:
                     System.err.println("Blogai nurodytas pasirinkimas");
             }
         }
+
+        /* prisijungimoPasirinkimas(pasirinkimas);
+
+        isCorrectPath = false;
+
+        while (!isCorrectPath) {
+
+            switch (pasirinkimas.nextInt()) {
+
+                case (1):
+                    isCorrectPath = ElBankas.saskLikutisElBanke(vart, slap);
+                    break;
+                case (0):
+                    System.out.println("Programa išjungta");
+                    System.exit(0);
+                    break;
+                default:
+                    System.err.println("Blogai nurodytas pasirinkimas");
+            }
+        } */
     }
 
     private void prisijungimoPasirinkimas(Scanner pasirinkimas) {
@@ -75,11 +100,10 @@ public class Logika {
                     isCorrectPath = Bankomatas.prisijungtiPrieBankomato(vart);
                     break;
                 case (2):
-                    //isCorrectPath//
-                    Meniu.elektroninisBankas();
+                    isCorrectPath = ElBankas.prisijungtiPrieElBanko(vart);
                     break;
                 case (0):
-                    System.out.println("Programa isjungta");
+                    System.out.println("Programa išjungta");
                     System.exit(0);
                     break;
                 default:

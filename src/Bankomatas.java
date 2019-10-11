@@ -19,7 +19,7 @@ public class Bankomatas {
     public static boolean prisijungtiPrieBankomato(PrisijungesVart vart) {
 
         Scanner ivedimas3 = new Scanner(System.in);
-        System.out.println("Iveskite PIN koda: ");
+        System.out.println("Įveskite PIN kodą: ");
         int Pin = ivedimas3.nextInt();
 
         boolean arPavyko = false;
@@ -69,7 +69,7 @@ public class Bankomatas {
 
             int sumaspausd = rs.getInt(1);
 
-            System.out.println("Saskaitos likutis: " + sumaspausd + " EUR");
+            System.out.println("Sąskaitos likutis: " + sumaspausd + " EUR");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,9 +80,9 @@ public class Bankomatas {
 
     public static boolean piniguInesimas(PrisijungesVart vart, PrisijungesVart slap) {
 
-        Scanner ivedimas4 = new Scanner(System.in);
-        System.out.println("Inesama suma: ");
-        int pridedamaSuma = ivedimas4.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Įnešama suma: ");
+        int pridedamaSuma = scanner.nextInt();
 
         boolean arPavyko = false;
 
@@ -100,7 +100,7 @@ public class Bankomatas {
             int sumaSudeta = rs.getInt(1);
             int naujaSuma = sumaSudeta + pridedamaSuma;
 
-            System.out.println("Naujas saskaitos likutis: " + naujaSuma + " EUR");
+            System.out.println("Naujas sąskaitos likutis: " + naujaSuma + " EUR");
 
             String sql1 = "UPDATE Registracija SET suma = ? WHERE elpastas = ? AND slaptazodis = ?";
 
@@ -117,5 +117,94 @@ public class Bankomatas {
         }
 
         return arPavyko;
+    }
+
+    public static boolean pasiimtiPinigu(PrisijungesVart vart, PrisijungesVart slap) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Išimama suma: ");
+        int isimamaSuma = scanner.nextInt();
+
+        boolean arPavyko = false;
+
+        String sql = "SELECT suma FROM Registracija WHERE elpastas = ? AND slaptazodis = ?";
+
+        try {
+
+            Connection c = connect();
+            PreparedStatement myStm = c.prepareStatement(sql);
+            myStm.setString(1, vart.prisVardas);
+            myStm.setString(2, slap.prisSlapt);
+
+            ResultSet rs = myStm.executeQuery();
+
+            int sumaSudeta = rs.getInt(1);
+            int naujaSuma = sumaSudeta - isimamaSuma;
+
+            System.out.println("Naujas sąskaitos likutis: " + naujaSuma + " EUR");
+
+            String sql1 = "UPDATE Registracija SET suma = ? WHERE elpastas = ? AND slaptazodis = ?";
+
+            PreparedStatement mystm = c.prepareStatement(sql1);
+
+            mystm.setInt(1, naujaSuma);
+            mystm.setString(2, vart.prisVardas);
+            mystm.setString(3, slap.prisSlapt);
+
+            mystm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return arPavyko;
+    }
+
+    public static boolean pakeistiPIN(PrisijungesVart vart, PrisijungesVart slap) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Įveskite naują PIN kodą: ");
+        int naujasPIN = scanner.nextInt();
+        System.out.println("Pakartokite PIN kodą: ");
+        int pakartotPIN = scanner.nextInt();
+
+        if (naujasPIN == pakartotPIN) {
+
+            boolean arPavyko = false;
+
+            String sql = "SELECT PIN FROM Registracija WHERE elpastas = ? AND slaptazodis = ?";
+
+            try {
+
+                Connection c = connect();
+                PreparedStatement myStm = c.prepareStatement(sql);
+                myStm.setString(1, vart.prisVardas);
+                myStm.setString(2, slap.prisSlapt);
+
+                myStm.executeQuery();
+
+                System.out.println("PIN kodas pakeistas!" + "\n" + "Naujas PIN kodas: " + naujasPIN);
+
+                String sql1 = "UPDATE Registracija SET PIN = ? WHERE elpastas = ? AND slaptazodis = ?";
+
+                PreparedStatement mystm = c.prepareStatement(sql1);
+
+                mystm.setInt(1, naujasPIN);
+                mystm.setString(2, vart.prisVardas);
+                mystm.setString(3, slap.prisSlapt);
+
+                mystm.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return arPavyko;
+
+        } else {
+            System.out.println("PIN kodas nesutampa!" + "\n" + "Bandykite iš naujo");
+            pakeistiPIN(vart, slap);
+        }
+        return false;
     }
 }

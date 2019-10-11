@@ -35,12 +35,14 @@ public class Meniu {
 
         System.out.println("        ********************************");
         System.out.println("        *                              *");
-        System.out.println("        *  Pasirinkite veiksma         *");
+        System.out.println("        *  Pasirinkite paslaugą!       *");
         System.out.println("        *                              *");
         System.out.println("        *                              *");
         System.out.println("        *  1 - Saskaitos likutis       *");
-        System.out.println("        *  2 - Pinigu inesimas         *"); // Pinigu issigryninimas!
-        System.out.println("        *  3 - Gryzti atgal            *");
+        System.out.println("        *  2 - Inešti pinigų           *");
+        System.out.println("        *  3 - Pasiimti pinigų         *");
+        System.out.println("        *  4 - PIN keitimas            *");
+        System.out.println("        *  5 - Grįžti atgal            *");
         System.out.println("        *                              *");
         System.out.println("        *  0 - Išjungti programą       *");
         System.out.println("        *                              *");
@@ -51,11 +53,11 @@ public class Meniu {
 
         System.out.println("        ********************************");
         System.out.println("        *                              *");
-        System.out.println("        *  Pasirinkite veiksma         *");
+        System.out.println("        *  Pasirinkite paslaugą!       *");
         System.out.println("        *                              *");
         System.out.println("        *                              *");
-        System.out.println("        *  1 - Saskaitos likutis       *");
-        System.out.println("        *  2 - Pinigu pervedimas       *");
+        System.out.println("        *  1 - Sąskaitos likutis       *");
+        System.out.println("        *  2 - Pinigų pervedimas       *");
         System.out.println("        *  3 - ------------            *");
         System.out.println("        *                              *");
         System.out.println("        *  0 - Išjungti programą       *");
